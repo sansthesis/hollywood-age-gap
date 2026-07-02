@@ -1,0 +1,9 @@
+{
+  "name": "Disclosure Day",
+  "year": 2026,
+  "director": "Steven Spielberg",
+  "relationships": [
+    ["Wyatt Russell", "Emily Blunt"],
+    ["Josh O'Connor", "Eve Hewson"]
+  ]
+}
