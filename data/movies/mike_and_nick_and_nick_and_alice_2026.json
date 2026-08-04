@@ -1,0 +1,9 @@
+{
+    "name": "Mike & Nick & Nick & Alice",
+    "year": 2026,
+    "director": "BenDavid Grabinski",
+    "relationships": [
+        ["Vince Vaughn", "Eiza Gonzalez"],
+        ["James Marsden", "Eiza Gonzalez"]
+    ]
+}
