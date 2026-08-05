@@ -1,0 +1,8 @@
+{
+  "name": "Hello, Dolly!",
+  "year": 1969,
+  "director": "Gene Kelly",
+  "relationships": [
+    ["Walter Matthau", "Barbra Streisand"]
+  ]
+}

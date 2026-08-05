@@ -1,0 +1,8 @@
+{
+  "name": "The Adventures of Priscilla, Queen of the Desert",
+  "year": 1994,
+  "director": "Stephan Elliott",
+  "relationships": [
+    ["Bill Hunter", "Julia Cortez"]
+  ]
+}
