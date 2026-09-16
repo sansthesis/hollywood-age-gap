@@ -1,0 +1,9 @@
+{
+    "name": "Howard’s End",
+    "year": 1992,
+    "director": "James Ivory",
+    "relationships": [
+        ["Anthony Hopkins", "Emma Thompson"],
+        ["Anthony Hopkins", "Helena Bonham Carter"]
+    ]
+}
