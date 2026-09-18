@@ -2,54 +2,46 @@ var search = document.getElementById('search');
 var cards = document.getElementsByClassName('card');
 var searchableCardData = [];
 
+function normalize (str) {
+  return str
+    .toLowerCase()
+    .replace(/[‘’‚‛ʼ]/g, "'")  // smart single quotes/apostrophes
+    .replace(/[“”„‟]/g, '"')   // smart double quotes
+    .replace(/\band\b/g, '&');
+}
+
 for (var i = 0; i < cards.length; i++) {
   var card = cards[i];
   var titleEl = card.querySelector('h2');
   if (!titleEl) {
     continue;
   }
-  var searchContext = {
-    actorNames: [],
-    card: card,
-    title: titleEl.innerHTML,
-    year: card.querySelector('.year').innerHTML,
-    director: card.querySelector('.director').innerHTML,
-    franchise: card.querySelector('.franchise').innerHTML
-  };
+  var fields = [
+    titleEl.textContent,
+    card.querySelector('.year').textContent,
+    card.querySelector('.director').textCont
+    card.querySelector('.franchise').textContent
+  ];
   var actors = card.querySelectorAll('.actor .name');
   for (var j = 0; j < actors.length; j++) {
-    searchContext.actorNames.push(actors.item(j).innerHTML);
+    fields.push(actors.item(j).textContent);
   }
-  searchableCardData.push(searchContext);
+  searchableCardData.push({
+    card: card,
+    searchText: normalize(fields.join('\n'))
+  });
 }
 
-var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.oRequestAnimationFrame || window.setTimeout;
+var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame ||
+window.oRequestAnimationFrame || window.setT
 function doSearch (el) {
-  var searchTerm = new RegExp(el.target.value, 'i');
+  var searchTerm = normalize(el.target.value
   var show = [];
   var hide = [];
 
-  for (var i = 0; i < searchableCardData.length; i++) {
+  for (var i = 0; i < searchableCardData.len
     var data = searchableCardData[i];
-    var hasMatch = false;
-    if (searchTerm.test(data.title)) {
-      hasMatch = true;
-    } else if (searchTerm.test(data.year)) {
-      hasMatch = true;
-    } else if (searchTerm.test(data.director)) {
-      hasMatch = true;
-    } else if (searchTerm.test(data.franchise)) {
-      hasMatch = true;
-    } else {
-      for (var j = 0; j < data.actorNames.length; j++) {
-        if (searchTerm.test(data.actorNames[j])) {
-          hasMatch = true;
-          j = data.actorNames.length;
-        }
-      }
-    }
-
-    if (hasMatch) {
+    if (data.searchText.indexOf(searchTerm)
       show.push(data.card);
     } else {
       hide.push(data.card);
@@ -67,14 +59,14 @@ function doSearch (el) {
   });
 }
 
-search.addEventListener('keyup', doSearch, false);
+search.addEventListener('keyup', doSearch, f
 
 function doClear () {
   search.value = '';
-  for (var i = 0; i < searchableCardData.length; i++) {
+  for (var i = 0; i < searchableCardData.len
     searchableCardData[i].card.classList.remove('hidden');
   }
 }
 
 var button = document.getElementsByClassName('clear')[0];
-button.addEventListener('click', doClear, false);
+button.addEventListener('click', doClear, fa
